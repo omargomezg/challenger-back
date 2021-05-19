@@ -1,0 +1,27 @@
+# ==================================================================================== #
+# APPLICATION CONFIGURATION
+# ==================================================================================== #
+server:
+  port: 8080
+  servlet:
+    context-path: /generator
+
+springdoc:
+  version: '@springdoc.version@'
+
+spring:
+  application:
+    name: ms-word-counter
+    profiles: dev
+  profiles:
+    active: dev
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: non_null
+  datasource:
+    url: jdbc:h2:mem:myDb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
