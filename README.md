@@ -1,6 +1,6 @@
 # ☕️ Word Counter
 
-> ℹ️ api generadora de tareas (schedule)
+> ℹ️ api generadora de textos
 
 ## ☝️ Dependencias
 
@@ -15,55 +15,45 @@
 
 ## El problema
 
-En el repositorio actual se encontrará un microservicio que generará un listado de tareas de forma aleatoria
-con el siguiente formato
+En el repositorio actual se encontrará un microservicio que entregará un texto de forma aleatoria en el siguiente
+formato
 
 ```
-GET http://localhost:8080/generator/schedule/tasks
+GET http://localhost:8080/generator/word-counter/text
+
+(Páginas posteriores)
+GET http://localhost:8080/generator/word-counter/text?id=2&&page=1
 ```
 
 ```json
-[
-    {
-    "task_id": "65b902ef-bd60-4a1c-aebb-21f929d57474",
-    "task_name": "Task 0",
-    "duration": 8
-    },
-    {
-    "task_id": "35951c98-a9c9-45f6-990b-4e746957f156",
-    "task_name": "Task 1",
-    "duration": 3
-    },
-    {
-    "task_id": "328f5534-aed7-44cd-a75a-d6f367fef51e",
-    "task_name": "Task 2",
-    "duration": 3
-    }
-]
+{
+  "id": "2",
+  "title": "Cinco semanas en globo",
+  "page": 5,
+  "total_pages": 5,
+  "text": "La línea aérea ......."
+}
 ```
 
-El objetivo es generar un api rest que organice las tareas de tal manera que retorne la minima cantidad de días en ser
-resueltas considerando jornadas de trabajo de 8 horas.
+El objetivo es generar un api rest que sea capaz de recorrer las paginas del libro y entregar un ranking de las palabras
+con mayor ocurrencia
 
 Ejemplo respuesta basándose en el enunciado:
 
 ```json
 {
-  "hrs_jornada": 8,
-  "dias_termino": 2,
-  "jornadas": [
+  "id": "2",
+  "title": "Cinco semanas en globo",
+  "ranking": [
     {
-      "id": 1,
-      "tareas": [
-        "65b902ef-bd60-4a1c-aebb-21f929d57474"
-      ]
+      "position": 1,
+      "word": "Palabra1",
+      "occurrences": 7
     },
     {
-      "id": 2,
-      "tareas": [
-        "35951c98-a9c9-45f6-990b-4e746957f156",
-        "328f5534-aed7-44cd-a75a-d6f367fef51e"
-      ]
+      "position": 2,
+      "word": "Palabra2",
+      "occurrences": 6
     }
   ]
 }
@@ -79,7 +69,7 @@ Ejemplo respuesta basándose en el enunciado:
 * Utilización de logs de trazabilidad
 * Test
 
-##️⭐️ Desafio técnico
+## ️⭐️ Desafio técnico
 
 A continuación se encuentran las
 [Instrucciones de desafío técnico](CONTRIBUTING.md)
