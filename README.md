@@ -1,19 +1,20 @@
 # ☕️ Word Counter (Desafío Banco Internacional)
 
-> ℹ️ api generadora de textos
+> ℹ️ api generadora de textos -> En este repositorio se encuentra un microservicio que generará los datos de entrada para el desafío
 
 ## ☝️ Dependencias
 
 * Java 11
 * Gradle (Wrapper incluido)
 
-## 🏁 Instalación y ejecución
+## 🚀 Instalación y ejecución
 
 ```bash
  ./gradlew bootRun
 ```
 
-## 🏁 Objetivos
+## 🏁 Objetivo
+
 * Generar un proyecto que exponga un api que de solución al problema expuesto a continuación
 
 ## El problema
