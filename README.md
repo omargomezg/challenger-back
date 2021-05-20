@@ -1,6 +1,6 @@
 # ☕️ Word Counter (Desafío Banco Internacional)
 
-> ℹ️ api generadora de textos -> En este repositorio se encuentra un microservicio que generará los datos de entrada para el desafío
+> ℹ️ Api generadora de textos -> En este repositorio se encuentra un microservicio que generará los datos de entrada para el desafío
 
 ## ☝️ Dependencias
 
@@ -15,7 +15,8 @@
 
 ## 🏁 Objetivo
 
-* Generar un proyecto que exponga un api que de solución al problema expuesto a continuación
+* Generar un proyecto que exponga un api rest (springboot) que de solución al problema expuesto a continuación
+* Generar un proyecto frontend (React) que consuma y muestre los datos generados por el servicio construido
 
 ## El problema
 
@@ -72,7 +73,7 @@ GET http://localhost:8080/generator/word-counter/text?id=2&&page=1
 * Utilización de logs de trazabilidad
 * Test
 
-## ️⭐️ Entrega Desafío técnico
+## ⭐️ Entrega Desafío técnico
 
 A continuación se encuentran las
 [Instrucciones para el envío del desafío técnico](CONTRIBUTING.md)
