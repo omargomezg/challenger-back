@@ -1,4 +1,4 @@
-# ☕️ Word Counter
+# ☕️ Word Counter (Desafío Banco Internacional)
 
 > ℹ️ api generadora de textos
 
@@ -13,11 +13,16 @@
  ./gradlew bootRun
 ```
 
+## 🏁 Objetivos
+* Generar un proyecto que exponga un api que de solución al problema expuesto a continuación
+
 ## El problema
 
-En el repositorio actual se encontrará un microservicio que entregará un texto de forma aleatoria en el siguiente
-formato
+En el repositorio actual se encontrará un microservicio que entregará un texto de forma aleatoria, con una cantidad de páginas ahi indicadas.
+El objetivo es generar un api rest que sea capaz de recorrer las páginas del texto y entregar un ranking de las palabras
+con mayor ocurrencia:
 
+* Formato Entrada
 ```
 GET http://localhost:8080/generator/word-counter/text
 
@@ -35,10 +40,7 @@ GET http://localhost:8080/generator/word-counter/text?id=2&&page=1
 }
 ```
 
-El objetivo es generar un api rest que sea capaz de recorrer las paginas del libro y entregar un ranking de las palabras
-con mayor ocurrencia
-
-Ejemplo respuesta basándose en el enunciado:
+* Ejemplo de respuesta (No necesariamente debe ser igual, ud puede considerar agregar o quitar información)
 
 ```json
 {
@@ -69,8 +71,8 @@ Ejemplo respuesta basándose en el enunciado:
 * Utilización de logs de trazabilidad
 * Test
 
-## ️⭐️ Desafio técnico
+## ️⭐️ Entrega Desafío técnico
 
 A continuación se encuentran las
-[Instrucciones de desafío técnico](CONTRIBUTING.md)
+[Instrucciones para el envío del desafío técnico](CONTRIBUTING.md)
 
