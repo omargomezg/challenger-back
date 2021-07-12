@@ -7,13 +7,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,7 +28,8 @@ public class TextFinder {
         this.textRepository = textRepository;
     }
 
-    public Text getText(Long id, Integer page) {
+
+    public Text getText(Long id, Integer page) throws NoSuchAlgorithmException {
         if (Objects.isNull(page)) {
             if (Objects.isNull(id)) {
                 return getRandomText();
@@ -37,16 +39,16 @@ public class TextFinder {
         return textRepository.findText(id, page);
     }
 
-    public Text getRandomText() {
+    public Text getRandomText() throws NoSuchAlgorithmException {
+        var rand = SecureRandom.getInstanceStrong();
         List<Long> allIds = textRepository.findAllIds();
-        Random rnd = new Random();
-        Integer index = rnd.nextInt(allIds.size());
+        var index = rand.nextInt(allIds.size());
         return textRepository.findText(allIds.get(index));
     }
 
     public List<RankingWords> wordRanking(Long id, Integer page, Long size) {
-        Text text = textRepository.findText(id, page);
-        var result = mostCommonWords(text.getText());
+        var text = textRepository.findText(id, page);
+        var result = mostCommonWords(text.getParagraph());
         if (size != -1) {
             return result.stream().limit(size).collect(Collectors.toList());
         }

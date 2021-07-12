@@ -31,7 +31,7 @@ public class TextRepositoryImpl implements TextRepository {
 					.totalPages(modelText.get().getTotalPages())
 					.page(page)
 					.title(modelText.get().getTitle())
-					.text(modelText.get().getPages().stream().filter(p -> p.getPageNumber().equals(page))
+					.paragraph(modelText.get().getPages().stream().filter(p -> p.getPageNumber().equals(page))
 							.findFirst().orElseThrow(() ->new NotFoundException("Id no encontrado"))
 							.getText())
 					.build();

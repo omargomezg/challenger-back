@@ -31,7 +31,7 @@ public class TextFinderTest {
     @Test
     void wordRanking_success() {
         var text = Text.builder()
-                .text("Hola mundo, el mundo esta a tus pies").build();
+                .paragraph("Hola mundo, el mundo esta a tus pies").build();
         when(textRepository.findText(1L, 3)).thenReturn(text);
         List<RankingWords> result = textFinder.wordRanking(1L, 3, 4L);
         assertEquals(4, result.size());

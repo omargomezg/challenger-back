@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
-import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 
 @Configuration
@@ -18,7 +17,7 @@ public class JacksonConfig {
 
 	@Bean
 	public Jackson2ObjectMapperBuilder jacksonBuilder() {
-		Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
+		var builder = new Jackson2ObjectMapperBuilder();
 		builder.propertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
 		builder.serializationInclusion(JsonInclude.Include.NON_NULL);
 

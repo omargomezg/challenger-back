@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import static org.springframework.http.ResponseEntity.ok;
@@ -39,8 +39,7 @@ public class TextController {
     )
     @GetMapping(value = GET_TEXT, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Object> getNearbyByCoordinates(@RequestParam(value = "id", required = false) Long id,
-                                                         @RequestParam(value = "page", required = false) Integer page,
-                                                         HttpServletRequest request) throws Exception {
+                                                         @RequestParam(value = "page", required = false) Integer page) throws NoSuchAlgorithmException {
 
         return ok(textFinder.getText(id, page));
     }

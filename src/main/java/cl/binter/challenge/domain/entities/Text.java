@@ -10,5 +10,5 @@ public class Text {
     private String title;
     private Integer page;
     private Integer totalPages;
-    private String text;
+    private String paragraph;
 }
