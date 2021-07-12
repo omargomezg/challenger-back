@@ -47,7 +47,11 @@ public class TextFinder {
 
     public List<RankingWords> wordRanking(Long id, Integer page, Long size) {
         Text text = textRepository.findText(id, page);
-        return mostCommonWords(text.getText()).stream().limit(size).collect(Collectors.toList());
+        var result = mostCommonWords(text.getText());
+        if (size != -1) {
+            return result.stream().limit(size).collect(Collectors.toList());
+        }
+        return result;
     }
 
     private List<RankingWords> mostCommonWords(String paragraph) {
