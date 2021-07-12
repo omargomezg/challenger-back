@@ -7,12 +7,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,12 +45,12 @@ public class TextFinder {
         return textRepository.findText(allIds.get(index));
     }
 
-    public Set<RankingWords> wordRanking(Long id, Integer page) {
+    public List<RankingWords> wordRanking(Long id, Integer page, Long size) {
         Text text = textRepository.findText(id, page);
-        return mostCommonWords(text.getText());
+        return mostCommonWords(text.getText()).stream().limit(size).collect(Collectors.toList());
     }
 
-    private Set<RankingWords> mostCommonWords(String paragraph) {
+    private List<RankingWords> mostCommonWords(String paragraph) {
         if (Objects.nonNull(paragraph) && paragraph.length() > 0) {
             var result = new HashSet<RankingWords>();
             List<String> words = Arrays.stream(paragraph.replaceAll("[!?',;.]", "").toLowerCase()
@@ -59,9 +60,9 @@ public class TextFinder {
             for (String word : uniqueWord) {
                 result.add(new RankingWords(word, (int) words.stream().filter(word::equals).count()));
             }
-            return result;
+            return result.stream().sorted(Comparator.comparing(RankingWords::getMatch).reversed()).collect(Collectors.toList());
         }
-        return new HashSet<>();
+        return new ArrayList<>();
     }
 
 }

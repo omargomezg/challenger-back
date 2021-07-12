@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Set;
+import java.util.List;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -39,9 +39,11 @@ public class TextController {
     }
 
     @GetMapping("text/most-common")
-    public ResponseEntity<Set<RankingWords>> getMostCommonWordInParagraph(@RequestParam(value = "id") Long id,
-                                                                          @RequestParam(value = "page") Integer page) {
-        return ok(textFinder.wordRanking(id, page));
+    public ResponseEntity<List<RankingWords>> getMostCommonWordInParagraph(
+            @RequestParam(value = "id") Long id,
+            @RequestParam(value = "page") Integer page,
+            @RequestParam(value = "size", required = false, defaultValue = "5") Long size) {
+        return ok(textFinder.wordRanking(id, page, size));
     }
 
     @Autowired
