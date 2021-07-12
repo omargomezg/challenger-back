@@ -1,4 +1,4 @@
-# ☕️ Word Counter (Desafío Banco Internacional)
+# ☕️ Word Counter
 
 > ℹ️ Api generadora de textos -> En este repositorio se encuentra un microservicio que generará los datos de entrada para el desafío
 
@@ -72,9 +72,3 @@ GET http://localhost:8080/generator/word-counter/text?id=2&&page=1
 * Documentación
 * Utilización de logs de trazabilidad
 * Test
-
-## ⭐️ Entrega Desafío técnico
-
-A continuación se encuentran las
-[Instrucciones para el envío del desafío técnico](CONTRIBUTING.md)
-

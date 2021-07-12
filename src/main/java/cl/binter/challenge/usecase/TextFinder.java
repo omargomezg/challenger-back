@@ -41,7 +41,6 @@ public class TextFinder {
         List<Long> allIds = textRepository.findAllIds();
         Random rnd = new Random();
         Integer index = rnd.nextInt(allIds.size());
-
         return textRepository.findText(allIds.get(index));
     }
 
@@ -66,6 +65,7 @@ public class TextFinder {
             }
             return result.stream().sorted(Comparator.comparing(RankingWords::getMatch).reversed()).collect(Collectors.toList());
         }
+        log.info("[TextFinder] Nothing paragraph to process and return empty array");
         return new ArrayList<>();
     }
 
